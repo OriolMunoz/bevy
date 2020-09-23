@@ -43,7 +43,7 @@ pub fn ui_focus_system(
     mut state: Local<State>,
     mouse_button_input: Res<Input<MouseButton>>,
     cursor_moved_events: Res<Events<CursorMoved>>,
-    mut node_query: Query<(
+    node_query: Query<(
         Entity,
         &Node,
         &GlobalTransform,

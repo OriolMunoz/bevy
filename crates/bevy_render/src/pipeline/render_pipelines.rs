@@ -75,7 +75,7 @@ pub fn draw_render_pipelines_system(
     mut draw_context: DrawContext,
     mut render_resource_bindings: ResMut<RenderResourceBindings>,
     msaa: Res<Msaa>,
-    mut query: Query<(&mut Draw, &mut RenderPipelines)>,
+    query: Query<(&mut Draw, &mut RenderPipelines)>,
 ) {
     for (mut draw, mut render_pipelines) in &mut query.iter() {
         if !draw.is_visible {

@@ -30,7 +30,7 @@ pub fn text_system(
     fonts: Res<Assets<Font>>,
     mut font_atlas_sets: ResMut<Assets<FontAtlasSet>>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,
-    mut query: Query<(Entity, Changed<Text>, &mut CalculatedSize)>,
+    query: Query<(Entity, Changed<Text>, &mut CalculatedSize)>,
     mut text_query: Query<(&Text, &mut CalculatedSize)>,
 ) {
     // add queued text to atlases
@@ -100,7 +100,7 @@ pub fn draw_text_system(
     texture_atlases: Res<Assets<TextureAtlas>>,
     mut render_resource_bindings: ResMut<RenderResourceBindings>,
     mut asset_render_resource_bindings: ResMut<AssetRenderResourceBindings>,
-    mut query: Query<(&mut Draw, &Text, &Node, &GlobalTransform)>,
+    query: Query<(&mut Draw, &Text, &Node, &GlobalTransform)>,
 ) {
     for (mut draw, text, node, global_transform) in &mut query.iter() {
         if let Some(font) = fonts.get(&text.font) {

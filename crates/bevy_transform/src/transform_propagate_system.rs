@@ -3,15 +3,15 @@ use bevy_ecs::prelude::*;
 use bevy_math::Mat4;
 
 pub fn transform_propagate_system(
-    mut root_query: Query<Without<Parent, (Option<&Children>, &Transform, &mut GlobalTransform)>>,
-    mut transform_query: Query<(&Transform, &mut GlobalTransform, Option<&Children>)>,
+    root_query: Query<Without<Parent, (Option<&Children>, &Transform, &mut GlobalTransform)>>,
+    transform_query: Query<(&Transform, &mut GlobalTransform, Option<&Children>)>,
 ) {
     for (children, transform, mut global_transform) in &mut root_query.iter() {
         *global_transform.value_mut() = *transform.value();
 
         if let Some(children) = children {
             for child in children.0.iter() {
-                propagate_recursive(*global_transform.value(), &mut transform_query, *child);
+                propagate_recursive(*global_transform.value(), &transform_query, *child);
             }
         }
     }
@@ -19,7 +19,7 @@ pub fn transform_propagate_system(
 
 fn propagate_recursive(
     parent: Mat4,
-    transform_query: &mut Query<(&Transform, &mut GlobalTransform, Option<&Children>)>,
+    transform_query: &Query<(&Transform, &mut GlobalTransform, Option<&Children>)>,
     entity: Entity,
 ) {
     log::trace!("Updating Transform for {:?}", entity);

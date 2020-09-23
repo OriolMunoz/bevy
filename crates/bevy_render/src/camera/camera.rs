@@ -38,7 +38,7 @@ pub fn camera_system<T: CameraProjection + Component>(
     window_resized_events: Res<Events<WindowResized>>,
     window_created_events: Res<Events<WindowCreated>>,
     windows: Res<Windows>,
-    mut query: Query<(&mut Camera, &mut T)>,
+    query: Query<(&mut Camera, &mut T)>,
 ) {
     let mut changed_window_ids = Vec::new();
     // handle resize events. latest events are handled first because we only want to resize each window once

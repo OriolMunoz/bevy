@@ -55,7 +55,7 @@ impl Timer {
     }
 }
 
-pub(crate) fn timer_system(time: Res<Time>, mut query: Query<&mut Timer>) {
+pub(crate) fn timer_system(time: Res<Time>, query: Query<&mut Timer>) {
     for mut timer in &mut query.iter() {
         timer.tick(time.delta_seconds);
     }

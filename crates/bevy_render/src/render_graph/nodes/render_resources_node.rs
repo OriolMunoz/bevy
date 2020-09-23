@@ -426,7 +426,7 @@ impl<I, T: RenderResources> Default for RenderResourcesNodeState<I, T> {
 fn render_resources_node_system<T: RenderResources>(
     mut state: Local<RenderResourcesNodeState<Entity, T>>,
     render_resource_context: Res<Box<dyn RenderResourceContext>>,
-    mut query: Query<(Entity, &T, &Draw, &mut RenderPipelines)>,
+    query: Query<(Entity, &T, &Draw, &mut RenderPipelines)>,
 ) {
     let state = state.deref_mut();
     let uniform_buffer_arrays = &mut state.uniform_buffer_arrays;
@@ -569,7 +569,7 @@ fn asset_render_resources_node_system<T: RenderResources>(
     assets: Res<Assets<T>>,
     mut asset_render_resource_bindings: ResMut<AssetRenderResourceBindings>,
     render_resource_context: Res<Box<dyn RenderResourceContext>>,
-    mut query: Query<(&Handle<T>, &Draw, &mut RenderPipelines)>,
+    query: Query<(&Handle<T>, &Draw, &mut RenderPipelines)>,
 ) {
     let state = state.deref_mut();
     let uniform_buffer_arrays = &mut state.uniform_buffer_arrays;

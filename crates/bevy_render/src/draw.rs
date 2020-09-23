@@ -382,7 +382,7 @@ pub trait Drawable {
     fn draw(&mut self, draw: &mut Draw, context: &mut DrawContext) -> Result<(), DrawError>;
 }
 
-pub fn clear_draw_system(mut query: Query<&mut Draw>) {
+pub fn clear_draw_system(query: Query<&mut Draw>) {
     for mut draw in &mut query.iter() {
         draw.clear_render_commands();
     }

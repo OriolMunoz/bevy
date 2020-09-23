@@ -5,7 +5,7 @@ use smallvec::SmallVec;
 
 pub fn missing_previous_parent_system(
     mut commands: Commands,
-    mut query: Query<Without<PreviousParent, (Entity, &Parent)>>,
+    query: Query<Without<PreviousParent, (Entity, &Parent)>>,
 ) {
     // Add missing `PreviousParent` components
     for (entity, _parent) in &mut query.iter() {
@@ -16,9 +16,9 @@ pub fn missing_previous_parent_system(
 
 pub fn parent_update_system(
     mut commands: Commands,
-    mut removed_parent_query: Query<Without<Parent, (Entity, &PreviousParent)>>,
+    removed_parent_query: Query<Without<Parent, (Entity, &PreviousParent)>>,
     // TODO: ideally this only runs when the Parent component has changed
-    mut changed_parent_query: Query<(Entity, &Parent, &mut PreviousParent)>,
+    changed_parent_query: Query<(Entity, &Parent, &mut PreviousParent)>,
     children_query: Query<&mut Children>,
 ) {
     // Entities with a missing `Parent` (ie. ones that have a `PreviousParent`), remove

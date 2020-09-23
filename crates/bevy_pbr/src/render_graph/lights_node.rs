@@ -80,7 +80,7 @@ pub fn lights_node_system(
     render_resource_context: Res<Box<dyn RenderResourceContext>>,
     // TODO: this write on RenderResourceBindings will prevent this system from running in parallel with other systems that do the same
     mut render_resource_bindings: ResMut<RenderResourceBindings>,
-    mut query: Query<(&Light, &GlobalTransform)>,
+    query: Query<(&Light, &GlobalTransform)>,
 ) {
     let state = &mut state;
     let render_resource_context = &**render_resource_context;

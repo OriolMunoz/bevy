@@ -24,8 +24,8 @@ impl VisibleEntities {
 }
 
 pub fn visible_entities_system(
-    mut camera_query: Query<(&Camera, &GlobalTransform, &mut VisibleEntities)>,
-    mut draw_query: Query<(Entity, &Draw)>,
+    camera_query: Query<(&Camera, &GlobalTransform, &mut VisibleEntities)>,
+    draw_query: Query<(Entity, &Draw)>,
     draw_transform_query: Query<(&Draw, &GlobalTransform)>,
 ) {
     for (camera, camera_global_transform, mut visible_entities) in &mut camera_query.iter() {

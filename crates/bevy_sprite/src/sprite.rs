@@ -37,7 +37,7 @@ impl Sprite {
 pub fn sprite_system(
     materials: Res<Assets<ColorMaterial>>,
     textures: Res<Assets<Texture>>,
-    mut query: Query<(&mut Sprite, &Handle<ColorMaterial>)>,
+    query: Query<(&mut Sprite, &Handle<ColorMaterial>)>,
 ) {
     for (mut sprite, handle) in &mut query.iter() {
         match sprite.resize_mode {

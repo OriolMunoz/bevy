@@ -19,7 +19,7 @@ impl Default for Image {
 pub fn image_node_system(
     materials: Res<Assets<ColorMaterial>>,
     textures: Res<Assets<Texture>>,
-    mut query: Query<(&Image, &mut CalculatedSize, &Handle<ColorMaterial>)>,
+    query: Query<(&Image, &mut CalculatedSize, &Handle<ColorMaterial>)>,
 ) {
     for (_image, mut calculated_size, material_handle) in &mut query.iter() {
         if let Some(texture) = materials

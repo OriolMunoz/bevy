@@ -60,7 +60,7 @@ impl ShaderDef for Option<Handle<Texture>> {
 }
 
 /// Updates [RenderPipelines] with the latest [ShaderDefs]
-pub fn shader_defs_system<T>(mut query: Query<(&T, &mut RenderPipelines)>)
+pub fn shader_defs_system<T>(query: Query<(&T, &mut RenderPipelines)>)
 where
     T: ShaderDefs + Send + Sync + 'static,
 {
@@ -78,7 +78,7 @@ where
 }
 
 /// Clears each [RenderPipelines]' shader defs collection
-pub fn clear_shader_defs_system(mut query: Query<&mut RenderPipelines>) {
+pub fn clear_shader_defs_system(query: Query<&mut RenderPipelines>) {
     for mut render_pipelines in &mut query.iter() {
         for render_pipeline in render_pipelines.pipelines.iter_mut() {
             render_pipeline
@@ -93,7 +93,7 @@ pub fn clear_shader_defs_system(mut query: Query<&mut RenderPipelines>) {
 /// Updates [RenderPipelines] with the latest [ShaderDefs] from a given asset type
 pub fn asset_shader_defs_system<T>(
     assets: Res<Assets<T>>,
-    mut query: Query<(&Handle<T>, &mut RenderPipelines)>,
+    query: Query<(&Handle<T>, &mut RenderPipelines)>,
 ) where
     T: ShaderDefs + Send + Sync + 'static,
 {

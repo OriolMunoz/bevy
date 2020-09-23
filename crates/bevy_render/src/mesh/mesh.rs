@@ -498,7 +498,7 @@ pub fn mesh_resource_provider_system(
     meshes: Res<Assets<Mesh>>,
     mut vertex_buffer_descriptors: ResMut<VertexBufferDescriptors>,
     mesh_events: Res<Events<AssetEvent<Mesh>>>,
-    mut query: Query<(&Handle<Mesh>, &mut RenderPipelines)>,
+    query: Query<(&Handle<Mesh>, &mut RenderPipelines)>,
 ) {
     let vertex_buffer_descriptor = match state.vertex_buffer_descriptor {
         Some(value) => value,
