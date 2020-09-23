@@ -33,7 +33,7 @@ impl<'a, Q: HecsQuery> Query<'a, Q> {
     }
 
     #[inline]
-    pub fn iter(&mut self) -> QueryBorrowChecked<'_, Q> {
+    pub fn iter(&self) -> QueryBorrowChecked<'_, Q> {
         QueryBorrowChecked::new(&self.world.archetypes, self.archetype_access)
     }
 
